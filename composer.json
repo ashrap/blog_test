@@ -1,0 +1,15 @@
+{
+
+	"autoload": {
+
+		"classmap": [
+
+			"./"
+
+		]
+
+	},
+	"require": {
+		"intervention/image": "^2.5"
+	}
+}
