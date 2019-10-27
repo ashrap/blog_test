@@ -1,2 +1,22 @@
 # blog_test
-Test blog( vanilla php + vanilla js + bootstrap)
+ashrap.ru <a href="http://ashrap.ru"><b>DEMO</b></a> (login: admin, password: 123)
+
+<hr>
+
+++ <b>MVC</b></br>
+++ <b>Vanilla PHP</b></br>
+++ <b>Vanilla JS</b></br>
+++ <b>Bootsrap 4</b></br>
+
+<hr>
+
+<b>1 На сайте работает:</b></br></br>
+--Регистрация, логин, логаут, индекс всех постов, просмотр определенного поста, создание нового поста, редактирование поста, удаление поста.
+</br>
+</br>
+--Пост может редактировать или удалять только автор этого поста.
+</br>
+</br>
+--Редактирование и удаление постов через ajax.
+<hr>
+
