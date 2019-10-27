@@ -75,11 +75,26 @@ class Session
 **
 ***********************/
 
-	public static function generateToken() {
+	public static function generateToken($uri, $requestType) {		
 
+		$_SESSION['request'] = $requestType;
+
+		
+		if ( ! Session::checkRequest($uri, $requestType) ) return;
+
+
+		$_SESSION['previous_uri'] = $uri;
+
+		$_SESSION['previous_request_type'] = $requestType;
+	
+
+		
 		$_SESSION['previous_token'] = $_SESSION['token'];
 
+		
 		$_SESSION['token'] = bin2hex(random_bytes(32));
+
+
 
 	}
 
@@ -139,6 +154,38 @@ class Session
 		unset($_SESSION['errors']);
 
 		unset($_SESSION['data']);
+
+	}
+
+/*****************************************************************************************************/
+
+
+	
+
+/***********************
+**
+* *
+*  Check request
+* *
+**
+***********************/
+
+	public static function checkRequest($uri, $requestType) {
+
+		if ( ! isset ( $_SESSION['previous_uri'] ) && ! isset ( $_SESSION['previous_request_type'] ) ) {
+
+			return true;
+
+		} 
+
+
+		if ( $_SESSION['previous_uri'] === $uri && $_SESSION['previous_request_type'] === $requestType ) {
+
+			return false;
+
+		}
+
+		return true;
 
 	}
 

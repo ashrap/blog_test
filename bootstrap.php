@@ -1,6 +1,8 @@
 <?php 
 
 
+Session::start();
+
 
 App::bind('config', require 'config.php');
 
@@ -23,7 +25,6 @@ App::bind('public_path', $public_path);
 
 
 
-Session::start();
 
 
 
@@ -45,8 +46,6 @@ function redirect( $path, $errors = [], $data = [] ) {
 	Session::data($data);
 
 	header("Location: {$path}");
-
-	//unset($_SESSION['errors']);
 
 }
 

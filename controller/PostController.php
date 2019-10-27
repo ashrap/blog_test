@@ -263,7 +263,12 @@ class PostController
 
 		$image = App::get('public_path') . '/storage/images/' . $post['image'];
 
-		unlink($image);
+
+		if ($image) {
+
+			unlink($image);
+
+		}
 
 
 

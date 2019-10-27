@@ -126,17 +126,21 @@ class QueryBuilder
 
 	public function select($table, $param) {
 
-		$sql = sprintf (
+		foreach ($param as $key => $value) {	
 
-			"select * from %s where %s = %s",
+			$sql = sprintf (
 
-			$table,
+				"select * from %s where %s = %s",
 
-			array_key_first($param),
+				$table,
 
-			':' . array_key_first($param)
+				$key,
 
-		);
+				':' . $key
+
+			);
+
+		}
 
 
 		try {

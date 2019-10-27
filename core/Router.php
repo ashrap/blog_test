@@ -39,11 +39,7 @@ class Router
 
 			$uri = trim(explode( '{', $uri )[0], '/' );
 
-			$this->wildcards[] = $uri;
-
-			//die(var_dump($uri));
-
-			//$this->routes['GET'][$uri]['wildcard'] = $wildcard;
+			$this->wildcards[] = $uri;			
 
 			$this->routes['GET'][$uri] = $controller;
 
@@ -89,9 +85,6 @@ class Router
 
 	public function direct($uri, $requestType) {
 
-
-		Session::generateToken();
-
 		
 		foreach( $this->wildcards as $wildcard ) {
 
@@ -111,6 +104,8 @@ class Router
 
 			if ( array_key_exists($uri, $this->routes[$requestType]) ) {
 
+
+				Session::generateToken($uri, $requestType);
 
 
 				return $this->actionCall(
@@ -134,7 +129,11 @@ class Router
 
 		if ( $requestType === 'POST' ) {
 
+			
 			if ( array_key_exists($uri, $this->routes[$requestType]) ) {
+
+
+				Session::generateToken($uri, $requestType);
 
 
 				if ( ! hash_equals($_SESSION['previous_token'], $_POST['token']) ) {
@@ -180,10 +179,7 @@ class Router
 ***********************/
 
 	protected function actionCall($controller, $action) {
-
-		//$controller = "../controller/" . $controller;
-
-		//die(var_dump($controller));
+		
 
 		$controller = new $controller;
 
