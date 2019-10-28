@@ -7,6 +7,12 @@ Class RegisterController
 
 	public function index() {
 
+		if ( Session::status() ) {
+
+			return redirect('/');
+
+		}
+
 		return view('register');
 
 	}
@@ -15,6 +21,12 @@ Class RegisterController
 
 	public function store() {
 
+
+		if ( Session::status() ) {
+
+			return redirect('/');
+
+		}
 		
 
 		$result = App::get('validation')->validate([

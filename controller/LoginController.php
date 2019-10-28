@@ -32,6 +32,14 @@ Class LoginController
 
 	public function index() {
 
+
+		if ( Session::status() ) {
+
+			return redirect('/');
+
+		}	
+
+
 		return view('login');
 
 	}
@@ -50,6 +58,14 @@ Class LoginController
 ***********************/
 
 	public function login() {
+
+
+		if ( Session::status() ) {
+
+			return redirect('/');
+
+		}	
+
 
 		$result = App::get('validation')->validate([
 
